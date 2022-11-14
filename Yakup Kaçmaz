@@ -1,0 +1,40 @@
+#Kütüphane Programı
+import sqlite3
+baglanti=splite3.connect('Kutuphane.db')
+komut=baglanti.cursor()
+komut.execute("create table if not exists kitaplik(Kitapadi TEXT,yazar TEXT,ss INT,yayinevi TEXT,tur TEXT)")
+baglanti.commit()
+while True:   
+def listeleme():
+    komut.execute("select * from kitaplik")
+    liste=komut.fetchall()
+    print("kitap listesi")
+    for i in liste:
+        print(i)
+        def ekle (kitapadi,yazar,ss,yayinevi,tur):
+            komut.execute("insert into kitaplik values(@p1,@p2,@p3,@p4,@p5)",(kitapadi,yazar,ss,yayinevi,tur))
+            baglanti.commit()
+            def silme (kitapadi)
+            komut.execute("delete from kitaplik where kitapadi=@p1",(kitapadi,))
+            baglanti.commit()
+            print("""KÜTÜPHANEYE HOŞGELDİNİZ
+                  1-Kitap Listele
+                  2-Kitap Ekle
+                  3-Kitap Sil
+                  q-Çıkış""")
+                  a=input ("seçiminizi yapınız:")
+                 if a=="q":
+                 break
+             elif a=="1":
+             listeleme()
+         elif a=="2":
+         Kitapadi=input("Kitap Adını Giriniz:")
+         Yazar=input("Yazar Adını Giriniz:")
+         ss=int(input("Sayfa Sayısını Giriniz:"))
+         Yayinevi=input("Yayinevini Giriniz:")
+         Tur=input("Kitap Türünü Giriniz:")
+         ekle(kitapadi,yazar,ss,yayinevi,tur)
+     elif a=="3":
+         Kitapadi=input("Silmek İstediğiniz Kitap Adını Giriniz:")
+         silme(Kitapadi)
+         baglanti.close()
